@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import AddBookForm from "../components/AddBookForm"
+import Popup from '../components/Popup';
 import "../css/book.css"
 
 
@@ -13,18 +14,20 @@ function Book(props) {
     }
 
     return (
-        <div className="book">
+        <div className="book-display">
             { !onEdit ? 
                 <>
-                 <img src={imageUrl} alt="book cover" />
-                <h5>{title}</h5>
-                <p>{genre}</p>
-                <p>{summary}</p>
+                <img src={imageUrl} alt="book cover" />
                 <div className="btns-container">
-                    <button className="xBtn" onClick={() => props.delete(props._id)}>x</button>
-                    <button className="editBtn" onClick={()=> setOnEdit(true)}>Edit</button>
+                    <div className="x-edit-btn-container">
+                        <button className="xBtn" onClick={() => props.delete(props._id)}>x</button>
+                        <button className="editBtn" onClick={()=> setOnEdit(true)}>edit</button>
+                    </div>
                     <button className="finishBtn" onClick={() => props.edit({title, summary, genre, imageUrl, finished: !finished}, _id)}>{props.finishBtn}</button>
                 </div>
+                <h5 className="book-title">{title}</h5>
+                <p className="book-genre">{genre}</p>
+                <p className="book-summary">{summary}</p>
                 
                 </>
                 :

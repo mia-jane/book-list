@@ -9,7 +9,11 @@ function Popup(props) {
     <div className="popupBox">
       <div className="box">
         <span className="closeIcon" onClick={props.handleClose}>x</span>
-        <AddBookForm btnText="add" submit={addBook} />
+        <AddBookForm 
+          btnText="add" 
+          submit={props.submit} 
+          handleClose={props.handleClose} 
+          finished={props.finished} />
       </div>
     </div>
   );

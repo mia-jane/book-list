@@ -23,7 +23,8 @@ function AddBookForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.submit({...inputs, finished: props.finished}, props._id)
-        setInputs(initInputs) 
+        setInputs(initInputs)
+        props.handleClose() 
     }
 
     const {title, imageUrl, summary, genre} = inputs

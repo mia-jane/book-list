@@ -18,7 +18,7 @@ function Unread(props) {
             <div className="popupBtnContainer">
                 <button className="popupBtn" onClick={togglePopup}>Add Book</button>
             </div>
-            {isOpen && <Popup handleClose={togglePopup} />}
+            {isOpen && <Popup handleClose={togglePopup} submit={addBook} />}
             <BookList books={filters.unreadBooks} delete={deleteBook} edit={editBook} toggleFinished={markFinished} finishBtn="finished" />
         </div>
     );

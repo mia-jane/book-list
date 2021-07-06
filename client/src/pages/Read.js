@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from "react"
 import BookList from "../components/BookList"
-import AddBookForm from "../components/AddBookForm"
 import {UserContext} from "../context/UserProvider"
 import "../css/bookPages.css"
 import Popup from "../components/Popup"
@@ -18,9 +17,10 @@ function Read(props) {
     return (
         <div className="lists">
             <h1>finished</h1>
-            <button onClick={togglePopup}>add book</button>
-            {isOpen && <Popup handleClose={togglePopup} />}
-            <AddBookForm submit={addBook} finished btnText="add" />
+            <div className="popupBtnContainer">
+                <button className="popupBtn" onClick={togglePopup}>Add Book</button>
+            </div>
+            {isOpen && <Popup handleClose={togglePopup} submit={addBook} finished />}
             <BookList books={filters.readBooks} delete={deleteBook} edit={editBook} finishBtn="reread" />
         </div>
     );

@@ -1,8 +1,9 @@
 .bookList {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  max-width: 90%;
+  grid-gap: 50px;
 }
 .popupBtnContainer {
   display: flex;
@@ -10,8 +11,10 @@
 }
 .popupBtn {
   background-color: #2b2d42;
+  font-family: 'Uchen', serif;
+  font-weight: 600;
+  font-size: 25px;
   color: white;
-  /* border: 2px solid black; */
   height: 50px;
   border: none;
   margin:auto;
