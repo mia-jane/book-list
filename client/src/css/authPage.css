@@ -22,12 +22,11 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
-    /* border: 2px solid black; */
+    border: 2px solid black;
 }
 .input-container {
     width: 80%;
     height: 35%;
-    /* border: 2px solid magenta; */
     margin-top: 40px;
     display: flex;
     flex-direction: column;
@@ -47,6 +46,6 @@
     width: 200px;
     font-size: 30px;
 }
-.login-btn:hover {background-color: orange; color: black;}
+.login-btn:hover {background-color: black; color: ghostwhite;}
 
 

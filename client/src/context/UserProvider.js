@@ -20,7 +20,6 @@ function UserProvider(props){
                 const {user, token} = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("user", JSON.stringify(user))
-                //use ({}) below so that knows returning an object
                 setUserState(prevUserState => ({
                     ...prevUserState,
                     user,
@@ -69,10 +68,6 @@ function UserProvider(props){
             errMsg: ""
         }))
     }
-
-
-// Object.keys makes object key value pairs into array 
-
     const queryObjectToString = (query) => {
         let output = ""
         Object.keys(query).forEach((key, i, arr) => {
@@ -127,13 +122,10 @@ function UserProvider(props){
             })
             .catch(err => console.log(err.response.data.errMsg))
     }
-
-
     const filters = {
         get unreadBooks(){ return userState.books.filter(b => !b.finished)},
         get readBooks(){ return userState.books.filter(b => b.finished)},
     }
-
     return(
         <UserContext.Provider
             value={{
