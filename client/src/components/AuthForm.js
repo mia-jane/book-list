@@ -11,17 +11,18 @@ function AuthForm(props) {
     return (
         <div>
             <form className="authForm" onSubmit={handleSubmit}>
+                <div className="input-container">
                 <input
-                    className="userInput" 
+                    className="auth-input" 
                     type="text" 
                     placeholder="username"
                     id="username" 
                     name="username"
                     value={username}
                     onChange={handleChange} 
-                />
+                    />
                 <input 
-                    className="pwInput"
+                    className="auth-input"
                     type="password" 
                     placeholder="password" 
                     id="password"
@@ -29,8 +30,9 @@ function AuthForm(props) {
                     value={password}
                     onChange={handleChange}
                 />
-                <button>{btnText}</button>
-                <p style={{color: "red", fontSize: "20px"}}>{errMsg}</p>
+                </div>
+                <button className="login-btn">{btnText}</button>
+                <p className="errMsg" >{errMsg}</p>
             </form>
         </div>
     );

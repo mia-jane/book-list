@@ -11,6 +11,7 @@ function AddBookForm(props) {
         genre: props.genre || ""
     }
     const [inputs, setInputs] = useState(initInputs)
+    const {title, imageUrl, summary, genre} = inputs
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -22,12 +23,11 @@ function AddBookForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.submit({...inputs, finished: props.finished}, props._id)
+        props.submit({...inputs}, props._id)
         setInputs(initInputs)
         props.handleClose() 
     }
 
-    const {title, imageUrl, summary, genre} = inputs
 
     return (
         <div className="book-form-container">

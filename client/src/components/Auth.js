@@ -43,7 +43,7 @@ function Auth(props) {
                         btnText="sign up" 
                         errMsg={errMsg}
                     />
-                    <p onClick={toggleForm}>already a member?</p>
+                    <p className="login-toggle" onClick={toggleForm}>already a member?</p>
                 </>
                 :
                 <>
@@ -54,7 +54,7 @@ function Auth(props) {
                         btnText="login"
                         errMsg={errMsg}
                     />
-                    <p onClick={toggleForm}>not a member?</p>
+                    <p className="login-toggle" onClick={toggleForm}>not a member?</p>
                 </>
             }
         </div>

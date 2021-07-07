@@ -10,10 +10,16 @@ function Popup(props) {
       <div className="box">
         <span className="closeIcon" onClick={props.handleClose}>x</span>
         <AddBookForm 
-          btnText="add" 
+          btnText={props.btnText} 
           submit={props.submit} 
           handleClose={props.handleClose} 
-          finished={props.finished} />
+          finished={props.finished}
+          title={props.title}
+          imageUrl={props.imageUrl}
+          summary={props.summary}
+					genre={props.genre}
+          _id={props._id}   
+        />
       </div>
     </div>
   );

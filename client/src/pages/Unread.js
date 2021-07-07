@@ -14,12 +14,12 @@ function Unread(props) {
     }, [])
     return (
         <div className="lists">
-            <h1 style={{color: '#2b2d42'}}>to read</h1>
+            <h1>to read</h1>
             <div className="popupBtnContainer">
-                <button className="popupBtn" onClick={togglePopup}>Add Book</button>
+                <button className="popupBtn" onClick={togglePopup}>add book</button>
             </div>
-            {isOpen && <Popup handleClose={togglePopup} submit={addBook} />}
-            <BookList books={filters.unreadBooks} delete={deleteBook} edit={editBook} toggleFinished={markFinished} finishBtn="finished" />
+            {isOpen && <Popup btnText="add" handleClose={togglePopup} submit={addBook} finished={false} />}
+            <BookList books={filters.unreadBooks} delete={deleteBook} edit={editBook} finishBtn="finished" />
         </div>
     );
 }

@@ -27,34 +27,6 @@ bookRouter.post("/", (req, res, next) => {
         return res.status(201).send(savedBook)
     })
 })
-
-
-bookRouter.put("/:bookId", (req, res, next) => {
-    Book.findById(req.params.bookId, (err, book) => {
-        if(book.finished === false){
-            book.finished = !book.finished
-            book.save(err => {
-                if(err){
-                    res.status(500)
-                    return next(err)
-                }
-                return res.status(201).send(book)
-            })
-        } else if(book.finished === true){
-            book.finished = !book.finished
-            book.save(err => {
-                if(err) {
-                    res.status(500)
-                    return next(err)
-                }
-                return res.status(201).send(book)
-            })
-        }
-    })
-})
-
-
-
 bookRouter.put("/:bookId", (req, res, next ) => {
     Book.findOneAndUpdate(
         {_id: req.params.bookId, user: req.user._id },
