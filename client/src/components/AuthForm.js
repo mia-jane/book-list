@@ -14,6 +14,7 @@ function AuthForm(props) {
                 <div className="input-container">
                 <input
                     className="auth-input" 
+                    required
                     type="text" 
                     placeholder="username"
                     id="username" 
@@ -23,6 +24,7 @@ function AuthForm(props) {
                     />
                 <input 
                     className="auth-input"
+                    required
                     type="password" 
                     placeholder="password" 
                     id="password"
