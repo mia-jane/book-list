@@ -19,7 +19,6 @@
   border-radius: 15px;
   padding: 30px 0px;
   overflow: auto;
-  border: 2px solid magenta;
 }
 .close-icon-container {
   display: flex;
