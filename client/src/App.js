@@ -10,7 +10,6 @@ import Unread from "./pages/Unread"
 import AddBook from "./pages/AddBook"
 import ProtectedRoute from "./components/ProtectedRoute"
 
-
 function App() {
   const { token, logout } = useContext(UserContext)
   return (

@@ -1,10 +1,7 @@
 const express = require("express")
 const bookRouter = express.Router()
 const Book = require("../models/book")
-
-//get finished books
 bookRouter.get("/", (req, res, next) => {
-    // const finished = req.query.finished === "true"
     Book.find({user: req.user._id, ...req.query}, (err, books) => {
         if(err){
             res.status(500)
@@ -13,12 +10,9 @@ bookRouter.get("/", (req, res, next) => {
         res.status(200).send(books)
     })
 })
-
-//post unfinished
 bookRouter.post("/", (req, res, next) => {
     req.body.user = req.user._id
     const newBook = new Book(req.body)
-    // newBook.finished = true
     newBook.save((err, savedBook) => {
         if(err){
             res.status(500)
@@ -41,7 +35,6 @@ bookRouter.put("/:bookId", (req, res, next ) => {
         }
     )
 })
-
 bookRouter.delete("/:bookId", (req, res, next) => {
     Book.findOneAndDelete({_id: req.params.bookId, user: req.user._id}, (err, deletedBook) => {
         if(err){

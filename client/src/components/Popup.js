@@ -1,10 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import AddBookForm from './AddBookForm';
 import "../css/popup.css"
-import { UserContext } from '../context/UserProvider';
 
 function Popup(props) {
-  const {addBook} = useContext(UserContext)
   return (
     <div className="popupBox">
       <div className="box">

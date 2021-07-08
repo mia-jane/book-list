@@ -8,5 +8,4 @@ function ProtectedRoute(props) {
         <Redirect to={redirectTo} />
             
 }
-
 export default ProtectedRoute;

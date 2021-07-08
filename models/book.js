@@ -11,9 +11,6 @@ const bookSchema = new Schema({
         type: String,
         required: true
         },
-    // genre: {
-    //     type: Array,
-    // },
     summary: {
         type: String,
         required: true

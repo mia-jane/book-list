@@ -13,7 +13,6 @@ function Read(props) {
     useEffect(() => {
         getBooks({finished: true})
     }, [])
-
     return (
         <div className="lists">
             <h1>finished</h1>

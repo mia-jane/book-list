@@ -5,7 +5,7 @@ import "../css/bookPages.css"
 import Popup from '../components/Popup';
 
 function Unread(props) {
-    const {filters, getBooks, addBook, deleteBook, editBook, markFinished} = useContext(UserContext)
+    const {filters, getBooks, addBook, deleteBook, editBook} = useContext(UserContext)
     const [isOpen, setIsOpen] = useState(false)
     const togglePopup = () => setIsOpen(!isOpen)
 

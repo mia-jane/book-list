@@ -7,30 +7,23 @@ function Auth(props) {
     const initInputs = {username:"", password:""}
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
-
     const {signup, login, errMsg, resetAuthErr} = useContext(UserContext)
-
     const handleChange = (e) => {
         const {name, value} = e.target
         setInputs(prevInputs => ({...prevInputs, [name]: value}))
     }
-
     const handleSignup = (e) => {
         e.preventDefault()
         signup(inputs)
     }
-
     const handleLogin = (e) => {
         e.preventDefault()
         login(inputs)
     }
-
     function toggleForm(){
         setToggle(prev => !prev)
         resetAuthErr()
     }
-
-
     return (
         <div className="auth">
             <h1>Book List</h1>
