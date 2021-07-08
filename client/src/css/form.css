@@ -13,30 +13,30 @@
     gap: 20px;
     width: 80%;
 }
-
 .book-form > input {
     font-size: 25px;
     border: none;
     font-family: 'Uchen', serif;
     border-bottom: 2px solid black;
 }
-
 .book-form > input:focus { outline: none !important;}
-
-textarea {
-    height: 100px;
+.summary {
+    height: 150px;
+    width: 100%;
     margin-bottom: 50px;
     font-family: 'Uchen', serif;
-    border: none;
+    border: 2px solid black;
     font-size: 25px;
-    border-bottom: 2px solid black;
+    border-radius: 10px;
 }
-
-textarea:focus { outline: none !important;}
-
+.summary:focus { outline: none !important;}
+.add-btn-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 .add-btn {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 2px 40px;
     font-family: inherit;
     font-size: 20px;
     color: white;

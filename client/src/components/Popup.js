@@ -8,7 +8,9 @@ function Popup(props) {
   return (
     <div className="popupBox">
       <div className="box">
-        <span className="closeIcon" onClick={props.handleClose}>x</span>
+        <div className="close-icon-container">
+          <button className="closeIcon" onClick={props.handleClose}>x</button>
+        </div>
         <AddBookForm 
           btnText={props.btnText} 
           submit={props.submit} 

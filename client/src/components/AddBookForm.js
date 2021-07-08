@@ -20,15 +20,12 @@ function AddBookForm(props) {
             [name]: value
         }))
     }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         props.submit({...inputs}, props._id)
         setInputs(initInputs)
         props.handleClose() 
     }
-
-
     return (
         <div className="book-form-container">
             <form className="book-form" onSubmit={handleSubmit}>
@@ -53,14 +50,19 @@ function AddBookForm(props) {
                     value={genre}
                     onChange={handleChange} 
                 />
-                <textarea 
-                    type="text" 
-                    placeholder="summary"
-                    name="summary"
-                    value={summary}
-                    onChange={handleChange} 
-                />
-                <button className="add-btn">{props.btnText}</button>
+                <div className="summary-area">
+                    <p style={{fontSize:25}}>summary:</p>
+                    <textarea 
+                        className="summary"
+                        type="text" 
+                        name="summary"
+                        value={summary}
+                        onChange={handleChange} 
+                    />
+                </div>
+                <div className="add-btn-container">
+                    <button className="add-btn">{props.btnText}</button>
+                </div>
             </form>
         </div>
     );
