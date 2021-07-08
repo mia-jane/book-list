@@ -26,7 +26,7 @@ function Auth(props) {
     }
     return (
         <div className="auth">
-            <h1>Book List</h1>
+            <h1 className="site-title">Book List</h1>
             { !toggle ? 
                 <>
                     <AuthForm

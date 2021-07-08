@@ -13,8 +13,8 @@ function Unread(props) {
         getBooks({finished: false})
     }, [])
     return (
-        <div className="lists">
-            <h1>to read</h1>
+        <div className="book-page">
+            <h1 className="page-title">to read</h1>
             <div className="popupBtnContainer">
                 <button className="popupBtn" onClick={togglePopup}>add book</button>
             </div>

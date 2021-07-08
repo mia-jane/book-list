@@ -14,8 +14,8 @@ function Read(props) {
         getBooks({finished: true})
     }, [])
     return (
-        <div className="lists">
-            <h1>finished</h1>
+        <div className="book-page">
+            <h1 className="page-title">finished</h1>
             <div className="popupBtnContainer">
                 <button className="popupBtn" onClick={togglePopup}>add book</button>
             </div>

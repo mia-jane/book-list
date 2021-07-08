@@ -1,11 +1,8 @@
 .auth {
-    text-align: center;
     font-family: 'Uchen', serif;
-}
-.auth > h1 {
-    font-size: 55px;
-    margin-bottom: 50px;
-    font-family: 'Uchen', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .login-toggle {font-size: 25px;}
 .login-toggle:hover {
