@@ -36,7 +36,10 @@
     color: #373F51;
     outline: none;
 }
-.errMsg {font-size: 15px;}
+.errMsg {
+    font-size: 15px;
+    color: #6a040f;
+}
 .login-btn {
     font-family: 'Uchen', serif;
     width: 200px;

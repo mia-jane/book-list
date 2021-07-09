@@ -12,12 +12,18 @@ body {
     justify-content: flex-end;
     background-color: white;
     padding-top: 15px;
-    /* padding-right: 50px; */
+    padding-bottom: 5px;
+    
+}
+.nav-backdrop {
     border-bottom: 2px solid black;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
 }
-.nav-container {
-    padding-right: 40px;
-}
+.nav-container { padding-right: 40px; }
 .links {
     font-size: 25px;
     padding-right: 30px;
