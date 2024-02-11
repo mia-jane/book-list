@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditBookForm from "./EditBookForm";
 import "../css/form.css";
+require("dotenv").config();
 
 function AddBookForm(props) {
   const initBookInfo = {
@@ -24,9 +25,9 @@ function AddBookForm(props) {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
           title
-        )}+inauthor:${encodeURIComponent(
-          author
-        )}&key=AIzaSyCc81Wwp56J_dpB5G2uKnXYXnlYwu8N1WY`
+        )}+inauthor:${encodeURIComponent(author)}&key=${
+          process.env.GOOGLE_BOOKS_API_KEY
+        }`
       );
       const data = await response.json();
       console.log(data);
@@ -113,14 +114,23 @@ function AddBookForm(props) {
 
           {displaySearchResult && (
             <div className="book-preview">
-              {imageUrl && <img src={imageUrl} alt="Book Cover" className="book-cover" />}
+              {imageUrl && (
+                <img src={imageUrl} alt="Book Cover" className="book-cover" />
+              )}
               <h2>{title}</h2>
               <h3>{author}</h3>
               <p className="book-genre">{genre}</p>
               <p className="book-summary">{summary}</p>
-              <div class="buttons-container">
-                <button class="default-btn white-btn" onClick={() => setOpenEdit(true)}>edit details</button>
-                <button class="default-btn" onClick={handleSubmit}>add book</button>
+              <div className="buttons-container">
+                <button
+                  className="default-btn white-btn"
+                  onClick={() => setOpenEdit(true)}
+                >
+                  edit details
+                </button>
+                <button className="default-btn" onClick={handleSubmit}>
+                  add book
+                </button>
               </div>
             </div>
           )}

@@ -16,14 +16,28 @@ function Book(props) {
       {!onEdit ? (
         <>
           {imageUrl && (
-            <img src={imageUrl} class="book-cover book-cover-hover" alt="book cover" onClick={toggleBookDetails} />
+            <img
+              src={imageUrl}
+              className="book-cover book-cover-hover"
+              alt="book cover"
+              onClick={toggleBookDetails}
+            />
           )}
           <div className="btns-container">
             <div className="x-edit-btn-container">
-              <button className="xBtn" onClick={() => props.delete(props._id)}>x</button>
-              <button className="editBtn" onClick={() => setOnEdit(true)}>edit</button>
+              <button className="xBtn" onClick={() => props.delete(props._id)}>
+                x
+              </button>
+              <button className="editBtn" onClick={() => setOnEdit(true)}>
+                edit
+              </button>
             </div>
-            <button className="finishBtn" onClick={() => props.edit({ finished: !finished }, _id)}>{props.finishBtn}</button>
+            <button
+              className="finishBtn"
+              onClick={() => props.edit({ finished: !finished }, _id)}
+            >
+              {props.finishBtn}
+            </button>
           </div>
           <h5 className="book-title">{title}</h5>
           {openDetails && (
