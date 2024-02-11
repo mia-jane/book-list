@@ -1,6 +1,7 @@
 .popupBox {
   position: fixed;
-  background: #00000050;
+  /* background: #00000050; */
+  background: rgba(0,0,0,0.8);
   width: 100%;
   height: 100vh;
   top: 0;
@@ -16,7 +17,7 @@
   max-height: 650px;
   height: 70%;
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 30px 0px;
   overflow: auto;
 }
@@ -36,4 +37,13 @@
 .closeIcon:hover {
   background-color: #d90429;
   color: #fff;
+}
+
+.book-preview {
+  text-align: center;
+  padding: 30px ;
+}
+
+.book-details {
+  padding: 0 40px;
 }

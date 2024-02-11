@@ -34,7 +34,7 @@
     align-items: center;
     margin-bottom: 20px;
 }
-.add-btn {
+.default-btn {
     padding: 2px 40px;
     font-family: inherit;
     font-size: 20px;
@@ -43,6 +43,31 @@
     margin: auto;
     font-weight: 700;
     background-color: black;
+    transition: all 200ms linear;
 }
-.add-btn:focus { outline: none; }
-.add-btn:hover { cursor: pointer; }
+.default-btn:focus { outline: none; }
+.default-btn:active { 
+    background-color: black; 
+    color: white;
+}
+.default-btn:hover { cursor: pointer; }
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+
+.buttons-container .default-btn {
+    margin: 0;
+}
+
+.default-btn.white-btn {
+    background-color: ghostwhite;
+    color: black;
+}
+.default-btn.white-btn:hover {
+    background-color: black;
+    color: ghostwhite;
+}

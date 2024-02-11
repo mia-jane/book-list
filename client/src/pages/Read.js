@@ -19,7 +19,7 @@ function Read(props) {
             <div className="popupBtnContainer">
                 <button className="popupBtn" onClick={togglePopup}>add book</button>
             </div>
-            {isOpen && <Popup btnText="add" handleClose={togglePopup} submit={addBook} finished={true} />}
+            {isOpen && <Popup popupType="addNewBook" btnText="add" handleClose={togglePopup} submit={addBook} finished={true} />}
             <BookList books={filters.readBooks} delete={deleteBook} edit={editBook} finishBtn="reread" />
         </div>
     );

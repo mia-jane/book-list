@@ -8,19 +8,31 @@
     flex-direction: column;
     align-items: center;
 }
-img {
+.book-cover {
     height: 320px;
     width: 200px;
     margin-bottom: 15px;
 }
+
+.book-cover-hover:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
 .book-title {
     font-size: 30px;
-    text-transform: lowercase;
+    margin-block-end: 0;
+}
+
+.author {
+    font-size: 20px;
 }
 .book-genre {
     text-transform: lowercase;
     font-size: 20px;
     font-style: italic;
+    margin-block-end: 0;
+    margin-block-start: 0;
 }
 .book-summary {
     font-size: 20px;

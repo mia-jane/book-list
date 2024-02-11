@@ -1,72 +1,148 @@
-import React, {useState} from 'react';
-import "../css/form.css"
+import React, { useState } from "react";
+import EditBookForm from "./EditBookForm";
+import "../css/form.css";
 
 function AddBookForm(props) {
-    const initInputs = {
-        title: props.title || "",
-        imageUrl: props.imageUrl || "",
-        summary: props.summary || "",
-        genre: props.genre || "",
-        finished: props.finished
+  const initBookInfo = {
+    title: props.title || "",
+    author: props.author || "",
+    imageUrl: props.imageUrl || "",
+    summary: props.summary || "",
+    genre: props.genre || "",
+    finished: props.finished,
+  };
+
+  const [bookInfo, setBookInfo] = useState(initBookInfo);
+  const { title, author, imageUrl, summary, genre } = bookInfo;
+  const [error, setError] = useState(null);
+
+  const [displaySearchResult, setDisplaySearchResult] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+
+  const getBookInfo = async (title, author) => {
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
+          title
+        )}+inauthor:${encodeURIComponent(
+          author
+        )}&key=AIzaSyCc81Wwp56J_dpB5G2uKnXYXnlYwu8N1WY`
+      );
+      const data = await response.json();
+      console.log(data);
+
+      if (data.items && data.items.length > 0) {
+        const book = data.items[0].volumeInfo;
+        console.log(book);
+        const title = book.title;
+        const author = book.authors ? book.authors.join(", ") : "Unknown";
+        const genre = book.categories ? book.categories.join(",") : "Unknown";
+        const summary = book.description
+          ? book.description
+          : "No summary available";
+        const imageUrl = book.imageLinks?.thumbnail || "";
+
+        setBookInfo((prevBookInfo) => ({
+          ...prevBookInfo,
+          summary,
+          imageUrl,
+          genre,
+          author,
+          title,
+        }));
+        setError(null);
+        setDisplaySearchResult(true);
+      } else {
+        setError("Book not found, please manually enter the book's details");
+        setDisplaySearchResult(false);
+        setOpenEdit(true);
+      }
+    } catch (error) {
+      setError(
+        "Error fetching book information, please manually enter the book's details"
+      );
+      setDisplaySearchResult(false);
+      setOpenEdit(true);
     }
-    const [inputs, setInputs] = useState(initInputs)
-    const {title, imageUrl, summary, genre} = inputs
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            [name]: value
-        }))
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        props.submit({...inputs}, props._id)
-        setInputs(initInputs)
-        props.handleClose() 
-    }
-    return (
-        <div className="book-form-container">
-            <form className="book-form" onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="cover image url"
-                    name="imageUrl"
-                    value={imageUrl}
-                    onChange={handleChange}
-                />
-                <input 
-                    type="text" 
-                    required
-                    placeholder="title"
-                    name="title"
-                    value={title}
-                    onChange={handleChange} 
-                />
-                <input 
-                    type="text" 
-                    required
-                    placeholder="genre"
-                    name="genre"
-                    value={genre}
-                    onChange={handleChange} 
-                />
-                <div className="summary-area">
-                    <p style={{fontSize:25}}>summary:</p>
-                    <textarea 
-                        className="summary"
-                        required
-                        type="text" 
-                        name="summary"
-                        value={summary}
-                        onChange={handleChange} 
-                    />
-                </div>
-                <div className="add-btn-container">
-                    <button className="add-btn">{props.btnText}</button>
-                </div>
-            </form>
-        </div>
-    );
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBookInfo((prevBookInfo) => ({
+      ...prevBookInfo,
+      [name]: value,
+    }));
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    getBookInfo(bookInfo.title, bookInfo.author);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.submit({ ...bookInfo }, props._id);
+    setBookInfo(initBookInfo);
+    setDisplaySearchResult(false);
+    props.handleClose();
+  };
+
+  return (
+    <div className="book-form-container">
+      {!openEdit ? (
+        <>
+          <form className="book-form" onSubmit={handleSearch}>
+            <input
+              type="text"
+              required
+              placeholder="title"
+              name="title"
+              value={title}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              required
+              placeholder="author"
+              name="author"
+              value={author}
+              onChange={handleChange}
+            />
+            <button className="default-btn">Search</button>
+          </form>
+
+          {displaySearchResult && (
+            <div className="book-preview">
+              {imageUrl && <img src={imageUrl} alt="Book Cover" className="book-cover" />}
+              <h2>{title}</h2>
+              <h3>{author}</h3>
+              <p className="book-genre">{genre}</p>
+              <p className="book-summary">{summary}</p>
+              <div class="buttons-container">
+                <button class="default-btn white-btn" onClick={() => setOpenEdit(true)}>edit details</button>
+                <button class="default-btn" onClick={handleSubmit}>add book</button>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {error && <p>{error}</p>}
+          <EditBookForm
+            btnText={props.btnText}
+            submit={props.submit}
+            handleClose={props.handleClose}
+            finished={props.finished}
+            title={title}
+            author={author}
+            imageUrl={imageUrl}
+            summary={summary}
+            genre={genre}
+          />
+        </>
+      )}
+    </div>
+  );
 }
 
 export default AddBookForm;

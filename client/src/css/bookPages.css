@@ -21,4 +21,5 @@
   border: none;
   margin:auto;
   width: 200px;
+  transition: all 200ms linear;
 }
