@@ -40,7 +40,6 @@ function Popup(props) {
           />
         ) : (
           <div class="book-details">
-            <img src={props.cover} class="book-cover"  alt="book cover"></img>
             <h2 className="title">{props.title}</h2>
             <h3 className="author">{props.author}</h3>
             <p className="book-genre">{props.genre}</p>
