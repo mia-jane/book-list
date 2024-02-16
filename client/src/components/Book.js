@@ -15,13 +15,20 @@ function Book(props) {
     <div className="book-display">
       {!onEdit ? (
         <>
-          {imageUrl && (
+          {imageUrl ? (
             <img
               src={imageUrl}
               className="book-cover book-cover-hover"
               alt="book cover"
               onClick={toggleBookDetails}
             />
+          ) : (
+            <div
+              className="book-cover book-cover-default book-cover-hover"
+              onClick={toggleBookDetails}
+            >
+              <p>{title}</p>
+            </div>
           )}
           <div className="btns-container">
             <div className="x-edit-btn-container">
@@ -42,7 +49,7 @@ function Book(props) {
           <h5 className="book-title">{title}</h5>
           {openDetails && (
             <Popup
-              popupContent="bookDetails"
+              popupType="bookDetails"
               handleClose={toggleBookDetails}
               cover={imageUrl}
               title={title}
@@ -56,7 +63,7 @@ function Book(props) {
       ) : (
         <Popup
           btnText="edit"
-          popupContent="editBook"
+          popupType="editBook"
           handleClose={closeEdit}
           submit={handleEditSubmit}
           finished={finished}

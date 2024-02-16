@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EditBookForm from "./EditBookForm";
 import "../css/form.css";
-require("dotenv").config();
 
 function AddBookForm(props) {
   const initBookInfo = {
@@ -13,6 +12,7 @@ function AddBookForm(props) {
     finished: props.finished,
   };
 
+  const [apiKey, setApiKey] = useState(null);
   const [bookInfo, setBookInfo] = useState(initBookInfo);
   const { title, author, imageUrl, summary, genre } = bookInfo;
   const [error, setError] = useState(null);
@@ -20,14 +20,29 @@ function AddBookForm(props) {
   const [displaySearchResult, setDisplaySearchResult] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
-  const getBookInfo = async (title, author) => {
+  useEffect(() => {
+    async function fetchApiKey() {
+      try {
+        const response = await fetch("/apikeys/google-books-api-key");
+        if (!response.ok) {
+          throw new Error("Failed to fetch API key");
+        }
+        const data = await response.json();
+        setApiKey(data.apiKey);
+      } catch (error) {
+        console.error("Error fetching API key:", error.message);
+      }
+    }
+
+    fetchApiKey();
+  }, []);
+
+  const searchBooksApi = async (title, author) => {
     try {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
           title
-        )}+inauthor:${encodeURIComponent(author)}&key=${
-          process.env.GOOGLE_BOOKS_API_KEY
-        }`
+        )}+inauthor:${encodeURIComponent(author)}&key=${apiKey}`
       );
       const data = await response.json();
       console.log(data);
@@ -77,7 +92,7 @@ function AddBookForm(props) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    getBookInfo(bookInfo.title, bookInfo.author);
+    searchBooksApi(bookInfo.title, bookInfo.author);
   };
 
   const handleSubmit = (e) => {

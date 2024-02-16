@@ -19,6 +19,16 @@
     opacity: 0.85;
 }
 
+.book-cover-default {
+    background-color: #283044;
+}
+
+.book-cover-default p {
+    font-size: 15px;
+    color: #fff;
+    padding: 5px 8px;
+}
+
 .book-title {
     font-size: 30px;
     margin-block-end: 0;
